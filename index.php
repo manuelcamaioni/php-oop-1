@@ -37,9 +37,11 @@ $movies = [$wows, $django];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <title>Objects</title>
 </head>
 <body>
+    <div id="app">
 <ul> 
 <?php foreach ($movies as $movie){ ?>
     <li>
@@ -53,6 +55,6 @@ $movies = [$wows, $django];
         <?php } ?>
         
     </li>
-</ul>
+</ul></div>
 </body>
 </html>
