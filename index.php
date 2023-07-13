@@ -31,7 +31,7 @@ class Movie {
     }
 }
 
-$WoWS = new Movie('The Wolf of Wall Street', 'Martin Scorsese');
- var_dump($WoWS);
+$wows = new Movie('The Wolf of Wall Street', 'Martin Scorsese');
+ var_dump($wows);
 
 ?>
