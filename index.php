@@ -17,17 +17,19 @@ class Movie {
     public $title;
     public $director;
     public $actors;
+    public $genre;
 
-    function __construct(string $_title, array $_actors, string $_director){
+    function __construct(string $_title, array $_actors, string $_director, array $_genre){
         $this->title = $_title;
         $this->actors = $_actors;
         $this->director = $_director;
+        $this->genre = $_genre;
     }
 
 }
 
-$wows = new Movie('The Wolf of Wall Street',['Leonardo Di Caprio','Jordan Belfort','Margot Robbie'], 'Martin Scorsese');
-$django = new Movie('Django Unchained', ['Cristoph Waltz','Jamie Foxx', 'Samuel L. Jackson'], 'Quentin Tarantino');
+$wows = new Movie('The Wolf of Wall Street',['Leonardo Di Caprio','Jordan Belfort','Margot Robbie'], 'Martin Scorsese', ['Commedia', 'Black humor', 'Drammatico', 'Giallo']);
+$django = new Movie('Django Unchained', ['Cristoph Waltz','Jamie Foxx', 'Samuel L. Jackson'], 'Quentin Tarantino', ['Western', 'Drammatico', 'Azione']);
 $movies = [$wows, $django];
 ?>
 <!DOCTYPE html>
@@ -38,14 +40,19 @@ $movies = [$wows, $django];
     <title>Objects</title>
 </head>
 <body>
-<?php 
-foreach ($movies as $movie){
-    $properties = get_object_vars($movie);
-    foreach ($properties as $property => $value) {
-        if(is_array($value)) { echo $property . ': ' . implode(", ",$value) . PHP_EOL; }
-        else {echo $property . ': ' . $value . PHP_EOL;}
-    }
-  }
-?>
+<ul> 
+<?php foreach ($movies as $movie){ ?>
+    <li>
+        <?php
+            $properties = get_object_vars($movie);
+            foreach ($properties as $property => $value) {
+                if(is_array($value)) { echo $property . ': ' . implode(", ",$value) . PHP_EOL; }
+                else {echo $property . ': ' . $value . PHP_EOL;}
+            }
+        ?>
+        <?php } ?>
+        
+    </li>
+</ul>
 </body>
 </html>
