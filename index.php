@@ -16,22 +16,36 @@ organizzando il layout dividendo la struttura ed i contenuti in file e parziali 
 class Movie {
     public $title;
     public $director;
+    public $actors;
 
-    function __constructor($_title, $_director){
+    function __construct(string $_title, array $_actors, string $_director){
         $this->title = $_title;
+        $this->actors = $_actors;
         $this->director = $_director;
     }
 
-    public function getTitle(){
-        return $this->title;
-    }
-
-    public function getDirector(){
-        return $this->director;
-    }
 }
 
-$wows = new Movie('The Wolf of Wall Street', 'Martin Scorsese');
- var_dump($wows);
-
+$wows = new Movie('The Wolf of Wall Street',['Leonardo Di Caprio','Jordan Belfort','Margot Robbie'], 'Martin Scorsese');
+$django = new Movie('Django Unchained', ['Cristoph Waltz','Jamie Foxx', 'Samuel L. Jackson'], 'Quentin Tarantino');
+$movies = [$wows, $django];
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+<?php 
+foreach ($movies as $movie){
+    $properties = get_object_vars($movie);
+    foreach ($properties as $property => $value) {
+        if(is_array($value)) { echo $property . ': ' . implode(", ",$value) . PHP_EOL; }
+        else {echo $property . ': ' . $value . PHP_EOL;}
+    }
+  }
+?>
+</body>
+</html>
